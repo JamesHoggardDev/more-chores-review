@@ -8,11 +8,10 @@ fetch('http://localhost:3000/chores')
             choreArr.forEach(choreObj => renderOneCard(choreObj))
     })
 
-
-
 function renderOneCard(choreObj){
         let chCard = document.createElement('div')
             chCard.classList.add('chore-card')
+            chCard.dataset.id = choreObj.id
 
             chCard.innerHTML = `
             <button class="delete-button" data-id="${choreObj.id}">x</button>
@@ -27,6 +26,7 @@ eForm.addEventListener('submit', event => {
     event.preventDefault()
 
     let newChoreObj = {
+        id: "",
         title: event.target.title.value,
         duration: event.target.priority.value,
         priority: event.target.duration.value
@@ -41,18 +41,29 @@ eForm.addEventListener('submit', event => {
         },
         body: JSON.stringify(newChoreObj)
     })
-    .then(console.log)
-    // .then(resp => resp.json())
+})
 
+choreListDiv.addEventListener('click', event => {  
+    if(event.target.matches('.delete-button')){
 
-
-
-
+        fetch(`http://localhost:3000/chores/${event.target.dataset.id}`, {
+            method: "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(choreObj => {
+            let cardDiv = event.target.closest('div.chore-card')  
+                cardDiv.remove()
+        })     
+    }
 })
 
 
 
 
+
+
+
+// let cardDiv = event.target.closest('div.chore-card')  
 
 
 
