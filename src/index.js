@@ -56,24 +56,3 @@ choreListDiv.addEventListener('click', event => {
         })     
     }
 })
-
-
-
-
-
-
-
-// let cardDiv = event.target.closest('div.chore-card')  
-
-
-
-
-
-
-// let detH3 = document.createElement('h3')
-//             detH3.dataset.id = choreObj.id
-//             detH3.textContent = choreObj.title
-
-//         let detPar = document.createElement('p')
-//             detPar.dataset.id = choreObj.id
-//             detPar.textContent = choreObj.duration
