@@ -20,6 +20,7 @@ function renderOneCard(choreObj){
             <input type="text" name="name" value= "${choreObj.priority}" />
             ` 
         choreListDiv.append(chCard)
+        
 }
 
 eForm.addEventListener('submit', event => {
@@ -41,6 +42,7 @@ eForm.addEventListener('submit', event => {
         },
         body: JSON.stringify(newChoreObj)
     })
+    //Add .thens
 })
 
 choreListDiv.addEventListener('click', event => {  
